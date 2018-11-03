@@ -1,0 +1,14 @@
+body,
+button,
+input,
+select,
+optgroup,
+textarea {
+	color: whitesmoke;
+	font-family: $font__main;
+	line-height: $font__line-height-body;
+}
+
+@import "headings";
+
+@import "copy";
