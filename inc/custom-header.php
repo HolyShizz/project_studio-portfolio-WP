@@ -20,9 +20,10 @@ function project_studio_portfolio_custom_header_setup() {
 	add_theme_support( 'custom-header', apply_filters( 'project_studio_portfolio_custom_header_args', array(
 		'default-image'          => '',
 		'default-text-color'     => '000000',
-		'width'                  => 1000,
-		'height'                 => 250,
+		'width'                  => 0,
+		'height'                 => 0,
 		'flex-height'            => true,
+		'flex-width'            => true,
 		'wp-head-callback'       => 'project_studio_portfolio_header_style',
 	) ) );
 }
@@ -35,13 +36,13 @@ if ( ! function_exists( 'project_studio_portfolio_header_style' ) ) :
 	 * @see project_studio_portfolio_custom_header_setup().
 	 */
 	function project_studio_portfolio_header_style() {
-		$header_text_color = get_header_textcolor();
+		$header_image = get_header_image();
 
 		/*
 		 * If no custom options for text are set, let's bail.
 		 * get_header_textcolor() options: Any hex value, 'blank' to hide text. Default: add_theme_support( 'custom-header' ).
 		 */
-		if ( get_theme_support( 'custom-header', 'default-text-color' ) === $header_text_color ) {
+		if ( get_theme_support( 'custom-header', 'default-image' ) === $header_image ) {
 			return;
 		}
 
@@ -50,22 +51,18 @@ if ( ! function_exists( 'project_studio_portfolio_header_style' ) ) :
 		<style type="text/css">
 		<?php
 		// Has the text been hidden?
-		if ( ! display_header_text() ) :
+		if ( ! has_header_image() ) :
 			?>
-			.site-title,
-			.site-description {
-				position: absolute;
-				clip: rect(1px, 1px, 1px, 1px);
-			}
+			
 		<?php
 		// If the user has set a custom color for the text use that.
 		else :
 			?>
-			.site-title a,
-			.site-description {
-				color: #<?php echo esc_attr( $header_text_color ); ?>;
+			#masthead {
+				background-image: url('<?php echo esc_attr( $header_image ); ?>');
 			}
 		<?php endif; ?>
+		
 		</style>
 		<?php
 	}

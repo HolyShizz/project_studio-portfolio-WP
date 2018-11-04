@@ -3,7 +3,7 @@
  *
  * Handles toggling the navigation menu for small screens and enables TAB key
  * navigation support for dropdown menus.
- */
+
 ( function() {
 	var container, button, menu, links, i, len;
 
@@ -50,10 +50,11 @@
 		links[i].addEventListener( 'focus', toggleFocus, true );
 		links[i].addEventListener( 'blur', toggleFocus, true );
 	}
+ */
 
 	/**
 	 * Sets or removes .focus class on an element.
-	 */
+
 	function toggleFocus() {
 		var self = this;
 
@@ -72,10 +73,11 @@
 			self = self.parentElement;
 		}
 	}
+	 */
 
 	/**
 	 * Toggles `focus` class to allow submenu access on tablets.
-	 */
+
 	( function( container ) {
 		var touchStartFn, i,
 			parentLink = container.querySelectorAll( '.menu-item-has-children > a, .page_item_has_children > a' );
@@ -104,3 +106,12 @@
 		}
 	}( container ) );
 } )();
+	 */
+
+/* Custom navigation */
+
+jQuery(function(){
+    jQuery('#site-navigation').click(function() {
+        jQuery(this).toggleClass('open');
+    });
+});

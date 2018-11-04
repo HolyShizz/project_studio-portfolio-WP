@@ -1,4 +1,17 @@
 <?php
+
+
+/**
+ * Required: set 'ot_theme_mode' filter to true.
+ */
+add_filter( 'ot_theme_mode', '__return_true' );
+
+/**
+ * Required: include OptionTree.
+ */
+require( trailingslashit( get_template_directory() ) . 'option-tree/ot-loader.php' );
+
+
 /**
  * project_studio-portfolio functions and definitions
  *
@@ -87,17 +100,7 @@ if ( ! function_exists( 'project_studio_portfolio_setup' ) ) :
 endif;
 add_action( 'after_setup_theme', 'project_studio_portfolio_setup' );
 
-function project_studio_portfolio_menu() {
-	wp_nav_menu(array(
-	   'container' => false,                           // Remove nav container
-	   'menu_class' => 'medium-horizontal menu',       // Adding custom nav class
-	   'items_wrap' => '<ul id="%1$s" class="%2$s" data-responsive-menu="accordion medium-dropdown">%3$s</ul>',
-	   'theme_location' => 'menu-1',        			// Where it's located in the theme
-	   'depth' => 5,                                   // Limit the depth of the nav
-	   'fallback_cb' => false,                         // Fallback function (see below)
-	   'walker' => new Topbar_Menu_Walker()
-   ));
-}
+
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -141,7 +144,7 @@ function project_studio_portfolio_scripts() {
 
 	wp_enqueue_script( 'project_studio-portfolio-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
-	wp_enqueue_script( 'project_studio-portfolio-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+	wp_enqueue_script( 'project_studio-portfolio-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array('jquery'), '20151215', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
