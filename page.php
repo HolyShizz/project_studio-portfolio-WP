@@ -1,39 +1,39 @@
 <?php
-/**
- * The template for displaying all pages
- *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site may use a
- * different template.
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package project_studio-portfolio
- */
+
+/*
+Template Name: project_studio-portfolio
+*/
 
 get_header();
 ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+<div id="primary" class="content-area">
+	<main id="main" class="site-main">
 
-		<?php
-		while ( have_posts() ) :
-			the_post();
+		<section id="skills" class="skills">
+			<div class="skills_wrapper">
+				<h3>We can do it</h3>
+				<?php 
+				$skills_items = ot_get_option('skills', array() );
 
-			get_template_part( 'template-parts/content', 'page' );
+					if ( !empty ($skills_items)) {
+					
+					foreach ($skills_items as $skills_item) {
+						echo  
+					'<div class="skills_items">
+						<div class="skills_item">
+							<i class="'.$skills_item['skill_icon'].'"></i>
+							<p>'.$skills_item['skill_text'].'</p>
+						</div>
+					</div>';
+					}
+				}
+			?>
+			</div>
+		</section>
 
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
-
-		endwhile; // End of the loop.
-		?>
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
+	</main><!-- #main -->
+</div><!-- #primary -->
 
 <?php
 get_sidebar();

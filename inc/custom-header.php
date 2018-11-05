@@ -50,7 +50,7 @@ if ( ! function_exists( 'project_studio_portfolio_header_style' ) ) :
 		?>
 		<style type="text/css">
 		<?php
-		// Has the text been hidden?
+		// Has the image been hidden?
 		if ( ! has_header_image() ) :
 			?>
 			

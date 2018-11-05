@@ -118,7 +118,9 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 
 
 
-
+/*--------------------------------------------------------------
+#Header styles
+--------------------------------------------------------------*/
 header {
     background: no-repeat 50%;
     background-size: cover;
@@ -179,3 +181,50 @@ header {
 .button-scroll:hover p {
     transform: scale(1.1)
 }
+
+/*--------------------------------------------------------------
+#Section Skills styles
+--------------------------------------------------------------*/
+
+.skills {
+    color: black;
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgba(10,55,55,0.3);
+  }
+  .skills_wrapper {
+    padding-top: 100px;
+    max-width: 960px;
+    min-height: 100vh;
+    margin: auto auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    h3 {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 100px;
+      font-family: Oswald;
+      font-size: 48px;
+    }
+  }
+  .skills_items {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .skills_item {
+    width: 300px;
+    margin: 0 10px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    i {
+      font-size: 40px;
+      margin: auto 0;
+      margin-right: 10px;
+    }
+  }
+  
